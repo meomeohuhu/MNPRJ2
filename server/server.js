@@ -51,6 +51,12 @@ function clientRoom(row) {
   return { id: row.id, name: row.name, building: row.building, floor: row.floor, capacity: row.capacity, photoUrl: row.photo_url, equipment: row.equipment, status: row.status };
 }
 
+function dateOnly(value) {
+  if (!value) return "";
+  if (typeof value === "string") return value.slice(0, 10);
+  return new Intl.DateTimeFormat("en-CA", { timeZone: "Asia/Ho_Chi_Minh" }).format(value);
+}
+
 function clientBooking(row) {
   return {
     id: row.id,
@@ -61,7 +67,7 @@ function clientBooking(row) {
     roomFloor: row.room_floor,
     studentName: row.student_name,
     studentId: row.student_id,
-    bookingDate: row.booking_date,
+    bookingDate: dateOnly(row.booking_date),
     slotId: row.slot_id,
     slotLabel: row.slot_label,
     slotStart: row.slot_start,

@@ -22,9 +22,11 @@ const dateKey = (date: Date) => {
 const dateOptions = Array.from({ length: 7 }, (_, index) => { const date = new Date(); date.setHours(0, 0, 0, 0); date.setDate(date.getDate() + index); return dateKey(date); });
 const equipmentLabel: Record<Equipment, string> = { Projector: "Máy chiếu", Whiteboard: "Bảng trắng", "High-spec PC": "Máy tính mạnh", AC: "Điều hòa" };
 const isValidBooking = (booking: Partial<Booking>): booking is Booking => Boolean(booking.id && booking.roomName && booking.bookingDate && booking.slotLabel && booking.status);
+const normalizeDateInput = (date: string) => String(date || "").slice(0, 10);
 const formatDate = (date: string) => {
-  if (!/^\d{4}-\d{2}-\d{2}$/.test(String(date))) return "Chưa rõ ngày";
-  const value = new Date(`${date}T12:00:00`);
+  const normalized = normalizeDateInput(date);
+  if (!/^\d{4}-\d{2}-\d{2}$/.test(normalized)) return "Chưa rõ ngày";
+  const value = new Date(`${normalized}T12:00:00`);
   return Number.isNaN(value.getTime()) ? "Chưa rõ ngày" : new Intl.DateTimeFormat("vi-VN", { weekday: "short", month: "short", day: "numeric" }).format(value);
 };
 const formatFloor = (floor: string) => String(floor || "").toLowerCase().startsWith("tầng") ? floor : `Tầng ${floor || "?"}`;
