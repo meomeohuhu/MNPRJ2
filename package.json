@@ -7,6 +7,9 @@
     "dev": "vite --host 127.0.0.1",
     "dev:api": "node server/server.js",
     "dev:all": "concurrently \"npm run dev:api\" \"npm run dev\"",
+    "mobile": "npm --prefix mobile start",
+    "mobile:android": "npm --prefix mobile run android",
+    "mobile:typecheck": "npm --prefix mobile run typecheck",
     "build": "tsc && vite build",
     "start": "node server/server.js",
     "preview": "vite preview --host 127.0.0.1"

@@ -46,6 +46,28 @@ npm run dev:all
 
 Open `http://127.0.0.1:5173`.
 
+## Expo React Native mobile app
+
+The native mobile client lives in `mobile/` and uses the same Express API.
+
+Run with Expo Go:
+
+```bash
+cd mobile
+npm install
+cp .env.example .env
+npm start
+```
+
+Set the mobile API URL in `mobile/.env`:
+
+```env
+EXPO_PUBLIC_API_BASE_URL=https://your-render-service.onrender.com/api
+EXPO_PUBLIC_GOOGLE_CLIENT_ID=your-google-web-client-id.apps.googleusercontent.com
+```
+
+For Android emulator local testing, the mobile app defaults to `http://10.0.2.2:3001/api`. For a physical phone, use the Render URL or your computer LAN IP.
+
 To enable Google registration/login locally:
 
 1. Create a Web OAuth client in Google Cloud Console.
