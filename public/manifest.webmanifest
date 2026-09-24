@@ -1,0 +1,10 @@
+{
+  "name": "VKU Reserve - Đặt phòng VKU",
+  "short_name": "VKU Reserve",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#f4f7ff",
+  "theme_color": "#174a9c",
+  "description": "Đặt phòng học và phòng máy VKU.",
+  "icons": [{ "src": "/vku-mark.svg", "sizes": "any", "type": "image/svg+xml" }]
+}

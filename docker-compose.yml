@@ -1,0 +1,16 @@
+services:
+  postgres:
+    image: postgres:16-alpine
+    container_name: vku-room-booking-postgres
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: password
+      POSTGRES_DB: vku_booking
+    ports:
+      - "5433:5432"
+    volumes:
+      - vku_room_booking_pgdata:/var/lib/postgresql/data
+
+volumes:
+  vku_room_booking_pgdata:
