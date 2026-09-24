@@ -15,7 +15,7 @@ services:
           name: vku-room-booking-db
           property: connectionString
       - key: DATABASE_SSL
-        value: "false"
+        value: "true"
       - key: JWT_SECRET
         generateValue: true
       - key: GOOGLE_CLIENT_ID

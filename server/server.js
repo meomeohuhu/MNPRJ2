@@ -15,9 +15,11 @@ const port = Number(process.env.PORT ?? process.env.API_PORT ?? 3001);
 const jwtSecret = process.env.JWT_SECRET ?? "vku-reserve-development-secret";
 const googleClientId = process.env.GOOGLE_CLIENT_ID;
 const googleClient = new OAuth2Client(googleClientId);
+const databaseUrl = process.env.DATABASE_URL;
 const pool = new Pool({
-  connectionString: process.env.DATABASE_URL,
-  ssl: process.env.DATABASE_SSL === "true" ? { rejectUnauthorized: false } : undefined
+  connectionString: databaseUrl,
+  ssl: process.env.DATABASE_SSL === "true" ? { rejectUnauthorized: false } : undefined,
+  connectionTimeoutMillis: 10000
 });
 
 app.use(cors());
@@ -290,7 +292,14 @@ app.use((request, response, next) => {
 initDatabase()
   .then(() => app.listen(port, "0.0.0.0", () => console.log(`VKU Reserve listening on ${port}`)))
   .catch((error) => {
-    console.error("Database initialization failed:", error.message);
+    console.error("Database initialization failed", {
+      code: error.code,
+      message: error.message,
+      detail: error.detail,
+      hint: error.hint,
+      databaseUrlConfigured: Boolean(databaseUrl),
+      sslEnabled: process.env.DATABASE_SSL === "true"
+    });
     if (error.code === "28P01") {
       console.error("PostgreSQL rejected the username/password in DATABASE_URL. Update .env with your real local postgres password, or run: docker compose up -d postgres");
     }
