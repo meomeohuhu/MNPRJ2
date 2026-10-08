@@ -56,6 +56,10 @@ Không có Firebase, cloud OCR, backend hay API key trong dự án.
 
 Landing page nằm tại `deploy/render-site`. Cấu hình Render nằm ở `render.yaml`. Link APK/GitHub/Video đang để trạng thái chưa cấu hình vì chưa có release URL hoặc video thực tế; không sử dụng URL giả.
 
+## Repository
+
+ReceiptWise được upload tại branch [`receiptwise`](https://github.com/meomeohuhu/MNPRJ2/tree/receiptwise) của repository được cung cấp. Branch `main` hiện giữ project MNPRJ2 có sẵn và không bị ghi đè.
+
 ## Tác giả
 
 Nguyễn Thành Thịnh — 23IT262
