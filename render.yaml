@@ -1,0 +1,6 @@
+services:
+  - type: web
+    name: receiptwise-demo
+    runtime: static
+    buildCommand: echo "Static site ready"
+    staticPublishPath: ./deploy/render-site
